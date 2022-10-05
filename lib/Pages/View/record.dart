@@ -13,6 +13,7 @@ class Record extends StatefulWidget {
 
 class _RecordState extends State<Record> {
   FirebaseAction fa = FirebaseAction();
+  DateTime now = DateTime.now();
 
   String dateStr =
       "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}";
@@ -69,11 +70,25 @@ class _RecordState extends State<Record> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  createButton(const Icon(Icons.chevron_left_outlined)),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                      ),
+                      onPressed: () => previousDay(),
+                      child: const Icon(Icons.chevron_left_outlined)),
                   Text(dateStr,
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold)),
-                  createButton(const Icon(Icons.chevron_right_outlined)),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                      ),
+                      onPressed: () => nextDay(),
+                      child: const Icon(Icons.chevron_right_outlined)),
                 ],
               ),
             ),
@@ -196,7 +211,77 @@ class _RecordState extends State<Record> {
         child: icon);
   }
 
-  void previousDay() {}
+  void previousDay() async {
+    DateTime yesterday = now.subtract(const Duration(days: 1));
+    dateStr = "${yesterday.day}-${yesterday.month}-${yesterday.year}";
+    FirebaseAction newFa = FirebaseAction();
 
-  void nextDay() {}
+    List<Entry> newList = await newFa.retrieveDataOnDate(dateStr);
+
+    double totalCaloriesNew = 0;
+    double totalCarbNew = 0;
+    double totalProteinNew = 0;
+    double totalFatNew = 0;
+
+    for (int i = 0; i < newList.length; i++) {
+      totalCaloriesNew = totalCaloriesNew + newList[i].calories;
+      totalCarbNew = totalCarbNew + newList[i].carbs;
+      totalProteinNew = totalProteinNew + newList[i].protein;
+      totalFatNew = totalFatNew + newList[i].fat;
+    }
+
+    // rounding numbers to 2dp
+    totalCaloriesNew = double.parse((totalCaloriesNew).toStringAsFixed(2));
+    totalCarbNew = double.parse((totalCarbNew).toStringAsFixed(2));
+    totalProteinNew = double.parse((totalProteinNew).toStringAsFixed(2));
+    totalFatNew = double.parse((totalFatNew).toStringAsFixed(2));
+
+    setState(() {
+      now = yesterday;
+      dateStr = "${yesterday.day}-${yesterday.month}-${yesterday.year}";
+      foodItems.clear();
+      foodItems.addAll(newList);
+      totalCalories = totalCaloriesNew;
+      totalCarb = totalCarbNew;
+      totalProtein = totalProteinNew;
+      totalFat = totalFatNew;
+    });
+  }
+
+  void nextDay() async {
+    DateTime tomorrow = now.subtract(const Duration(days: -1));
+    dateStr = "${tomorrow.day}-${tomorrow.month}-${tomorrow.year}";
+    FirebaseAction newFa = FirebaseAction();
+
+    List<Entry> newList = await newFa.retrieveDataOnDate(dateStr);
+
+    double totalCaloriesNew = 0;
+    double totalCarbNew = 0;
+    double totalProteinNew = 0;
+    double totalFatNew = 0;
+
+    for (int i = 0; i < newList.length; i++) {
+      totalCaloriesNew = totalCaloriesNew + newList[i].calories;
+      totalCarbNew = totalCarbNew + newList[i].carbs;
+      totalProteinNew = totalProteinNew + newList[i].protein;
+      totalFatNew = totalFatNew + newList[i].fat;
+    }
+
+    // rounding numbers to 2dp
+    totalCaloriesNew = double.parse((totalCaloriesNew).toStringAsFixed(2));
+    totalCarbNew = double.parse((totalCarbNew).toStringAsFixed(2));
+    totalProteinNew = double.parse((totalProteinNew).toStringAsFixed(2));
+    totalFatNew = double.parse((totalFatNew).toStringAsFixed(2));
+
+    setState(() {
+      now = tomorrow;
+      dateStr = "${tomorrow.day}-${tomorrow.month}-${tomorrow.year}";
+      foodItems.clear();
+      foodItems.addAll(newList);
+      totalCalories = totalCaloriesNew;
+      totalCarb = totalCarbNew;
+      totalProtein = totalProteinNew;
+      totalFat = totalFatNew;
+    });
+  }
 }
