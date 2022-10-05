@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>676900236515-gn5cedoei5mdqhbgl1meis66dbpmbio5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.676900236515-gn5cedoei5mdqhbgl1meis66dbpmbio5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA0X-h59azKleKzMt3o6BPyx9vV5OeFUFg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>676900236515</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ditmecuocdoi1234.myApp</string>
+	<key>PROJECT_ID</key>
+	<string>diettrackertest-27944</string>
+	<key>STORAGE_BUCKET</key>
+	<string>diettrackertest-27944.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:676900236515:ios:c6f2695e667e6f427f69d6</string>
+</dict>
+</plist>

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "676900236515",
+    "project_id": "diettrackertest-27944",
+    "storage_bucket": "diettrackertest-27944.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676900236515:android:b7425bcc8dbc75557f69d6",
+        "android_client_info": {
+          "package_name": "com.example.my_ditmecuocdoi123"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676900236515-n9ni87jodig9uu35nb55tfu0hm5c5a7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGgcg0GbU6VsN-t2MlIkjAR5-7OgXN_qI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676900236515-n9ni87jodig9uu35nb55tfu0hm5c5a7s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "676900236515-gn5cedoei5mdqhbgl1meis66dbpmbio5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ditmecuocdoi1234.myApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
