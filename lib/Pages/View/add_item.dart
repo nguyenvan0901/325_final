@@ -53,7 +53,7 @@ class _AddState extends State<Add> {
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
-                foodSuggestion("Banana", 90.0, 23, 1.1, 0.3),
+                foodSuggestion("Banana", 110.0, 23, 1.1, 0.3),
                 const SizedBox(height: 10),
                 foodSuggestion("Rice Jasmine", 480.0, 108, 9, 1.5),
                 const SizedBox(height: 10),
