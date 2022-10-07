@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_app/Pages/Model/firebase.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+// This screen contains the daily nutriment summary in visualisations
+
 class Summary extends StatefulWidget {
   const Summary({super.key});
 
@@ -30,6 +32,8 @@ class _SummaryState extends State<Summary> {
   double totalFat = 0;
   List<Entry> foodItems = [];
 
+  // Initialse all the values of calories, carb, protein, fat and its percentage
+  // compared to the goal.
   Future<void> initialiseNutriments() async {
     List<Entry> items = await fa.retrieveDataOnDate(dateStr);
     setState(() {
@@ -94,7 +98,7 @@ class _SummaryState extends State<Summary> {
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   displayNutriment("Carbohydrates", totalCarb, carbGoal,
                       percentageCarb, Colors.green, Colors.green.shade100),
                   displayNutriment(
@@ -115,6 +119,8 @@ class _SummaryState extends State<Summary> {
     );
   }
 
+  // This CircularPercentIndicator component
+  // used to display the circle visualisation for calories.
   CircularPercentIndicator totalCaloDisplay() {
     return CircularPercentIndicator(
       animation: true,
@@ -142,6 +148,9 @@ class _SummaryState extends State<Summary> {
           ],
         ),
       ),
+
+      // This LinearPercentIndicator component
+      // used to display the line visualisation for carb, protein, fat.
       LinearPercentIndicator(
         animation: true,
         lineHeight: 20,

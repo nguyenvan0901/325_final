@@ -4,6 +4,8 @@ import 'package:my_app/Pages/View/loading.dart';
 import '../View/details.dart';
 import '../View/add_item.dart';
 
+// This file contains all the logic behind pathing for add item pages
+
 class AddNavigator extends StatefulWidget {
   const AddNavigator({super.key});
 

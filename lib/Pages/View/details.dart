@@ -1,8 +1,8 @@
-// This screen shows the detai
-
 import 'package:flutter/material.dart';
 import 'package:my_app/Pages/Model/barcode_scanner.dart';
 import 'package:my_app/Pages/Model/firebase.dart';
+
+// This screen contains all the nutriment details of food
 
 class Details extends StatefulWidget {
   const Details({super.key});
@@ -44,6 +44,8 @@ class _DetailsState extends State<Details> {
     int proteinsPercentage = ((protein * 4 / calories) * 100).round();
     int fatsPercentage = (100 - carbsPercentage - proteinsPercentage);
 
+    // This method is called whenever users changes the amount of serving
+    // and it will call set state to update the nutriment values.
     void changeValues(String text) {
       double? number = double.tryParse(text);
       if (number != null && number > 0) {
@@ -52,6 +54,7 @@ class _DetailsState extends State<Details> {
       }
     }
 
+    // This function will call the addToDatabase function in firebase.dart file
     void addToDatabase(String name, double calories, double carbs,
         double protein, double fat) async {
       fa.addToDatabase(name, calories, carbs, protein, fat);
@@ -159,6 +162,8 @@ class _DetailsState extends State<Details> {
                   SizedBox(
                     width: 80,
                     height: 40,
+
+                    // TextField component
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: const InputDecoration(
@@ -178,6 +183,8 @@ class _DetailsState extends State<Details> {
               ),
             ),
             const SizedBox(height: 30),
+
+            // Divider component
             divider(),
 
             // Displaying 2 buttons for users to either exit or save food
@@ -215,6 +222,7 @@ class _DetailsState extends State<Details> {
     );
   }
 
+  // Divider component
   Divider divider() {
     return const Divider(
       color: Colors.grey,

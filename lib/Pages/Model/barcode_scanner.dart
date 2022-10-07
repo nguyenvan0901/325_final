@@ -1,17 +1,23 @@
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
 
+// This file contains the functions for opening the barcode scanner by using
+// the package Flutter_barcode_scanner and with the barcode scanned, it will use
+// the openfoodfact package to retrive all the nutriment details about the food.
+
 class CodeScanner {
   String? productName = "Unknown";
   Map itemDetails = {};
 
   CodeScanner();
 
+  // Open the camera for barcode scanner.
   Future<void> openBarCodeScanner() async {
     String scanResult;
     scanResult = await FlutterBarcodeScanner.scanBarcode(
         "#ff6666", "Cancel", true, ScanMode.BARCODE);
 
+    // Retriving the food based on the barcode scanned.
     Product? product = await getProduct(scanResult);
 
     if (product == null) {
@@ -25,9 +31,8 @@ class CodeScanner {
       itemDetails['sugar'] = -1.0;
     } else {
       productName = product.productName;
-      print(product.nutriments?.toJson());
-      print(product.nutriments?.toJson()["salt_100g"]);
 
+      // Retriving all the nutriments from the Json
       if (product.nutriments?.toJson()["energy_100g"] != null) {
         itemDetails['calories'] = product.nutriments!.toJson()["energy_100g"];
       } else {
@@ -74,6 +79,7 @@ class CodeScanner {
     }
   }
 
+  // This method is used to retrieve the project that just got scanned
   Future<Product?> getProduct(scanResult) async {
     var barcode = scanResult;
 
@@ -89,10 +95,12 @@ class CodeScanner {
     }
   }
 
+  // This method returns the food name as a String.
   String? getItemName() {
     return productName;
   }
 
+  // This method returns the food nutriment as a Map.
   getDetails() {
     return itemDetails;
   }

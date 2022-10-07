@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// This screen displays the app settings.
+
 class Setting extends StatefulWidget {
   const Setting({super.key});
 
@@ -50,7 +52,7 @@ class _SettingState extends State<Setting> {
               divider(),
 
               // This code block is for displaying the save button
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
                 child: ElevatedButton.icon(
@@ -119,6 +121,7 @@ class _SettingState extends State<Setting> {
     );
   }
 
+  // Switch component
   Padding darkmodeSwitch() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 5, 0),
@@ -152,6 +155,7 @@ class _SettingState extends State<Setting> {
     );
   }
 
+  // Slider component
   Padding sliderDarkLevel() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 5, 0),

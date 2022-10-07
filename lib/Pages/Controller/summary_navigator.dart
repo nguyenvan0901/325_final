@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/Pages/View/summary.dart';
 
+// This file contains all the pathing for summary pages
+
 class SummaryNavigator extends StatefulWidget {
   const SummaryNavigator({super.key});
 

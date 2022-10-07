@@ -1,10 +1,10 @@
-// This screen is the main screen where users can use phone camera or gallary
-// to take photo of the fruit
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:my_app/Pages/Model/barcode_scanner.dart';
+
+// This screen is the first screen users see when they want to add a button.
+// It contains multiple food suggestions for users to add and also a button
+// for users to open the barcode scanner.
 
 class Add extends StatefulWidget {
   const Add({super.key});
@@ -21,62 +21,59 @@ class _AddState extends State<Add> {
   var itemDetails = {};
   CodeScanner cs = CodeScanner();
 
+  // Push the current screen to the camera screen and loading screen
   void scanBarCode() async {
-    // await cs.openBarCodeScanner();
-    // print("done sccanning");
-    // itemName = cs.getItemName();
-    // itemDetails = cs.getDetails();
-
-    // ignore: use_build_context_synchronously
-    // Navigator.pushReplacementNamed(context, '/details', arguments: {
-    //   'name': itemName!,
-    //   'calories per serve': itemDetails["calories"]!,
-    //   'carbohydrate per serve': itemDetails['carbohydrate']!,
-    //   'protein per serve': itemDetails['protein']!,
-    //   'fat per serve': itemDetails['fat']!,
-    //   'saturated fat per serve': itemDetails['saturated']!,
-    //   'salt per serve': itemDetails['salt']!,
-    //   'sugar per serve': itemDetails['sugar']!,
-    // });
     Navigator.pushReplacementNamed(context, '/loading');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // App Bar Component
       appBar: AppBar(
         title: const Text('Add Food'),
         backgroundColor: Colors.green,
       ),
+
+      // Single Child Scroll View component
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
+
+          // Column component
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                // SizedBox component
                 const SizedBox(height: 30),
+
+                // Text component
                 const Text("Commonly added food:",
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
-                foodSuggestion("Banana", 100, 10, 10, 10),
+                foodSuggestion("Banana", 90.0, 23, 1.1, 0.3),
                 const SizedBox(height: 10),
-                foodSuggestion("Banana", 100, 10, 10, 10),
+                foodSuggestion("Rice Jasmine", 480.0, 108, 9, 1.5),
                 const SizedBox(height: 10),
-                foodSuggestion("Banana", 100, 10, 10, 10),
+                foodSuggestion("White bread", 260.0, 50, 8, 3),
                 const SizedBox(height: 10),
-                foodSuggestion("Banana", 100, 10, 10, 10),
+                foodSuggestion("Blue milk", 70.0, 5, 3.4, 3.8),
                 const SizedBox(height: 10),
-                foodSuggestion("Banana", 100, 10, 10, 10),
+                foodSuggestion("Apple", 100.0, 27.6, 0.5, 0.3),
                 const SizedBox(height: 10),
-                foodSuggestion("Banana", 100, 10, 10, 10),
+                foodSuggestion("Streaky Bacon", 315, 2.5, 14.2, 28),
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
+
+                  // ElevatedButton with Icon component
                   child: ElevatedButton.icon(
                       style: elevatedButtonStyle(),
                       onPressed: () => scanBarCode(),
+
+                      // Icon component
                       icon: const Icon(Icons.document_scanner_outlined),
                       label: const Text("Open barcode scanner")),
                 ),
@@ -86,6 +83,8 @@ class _AddState extends State<Add> {
     );
   }
 
+  // This function returns a BoxDecoration which is a decoration for the border
+  // container used in this page.
   BoxDecoration boxdecor() {
     return BoxDecoration(
         color: Colors.grey[200],
@@ -95,6 +94,7 @@ class _AddState extends State<Add> {
         ));
   }
 
+  // This function retursns the style of all buttons on this page.
   ButtonStyle elevatedButtonStyle() {
     return ElevatedButton.styleFrom(
       minimumSize: const Size.fromHeight(50),
@@ -103,6 +103,7 @@ class _AddState extends State<Add> {
     );
   }
 
+  // This function creates a container that to contain commond food in this page
   Container foodSuggestion(
       String name, double calo, double carbs, double proteins, double fats) {
     return Container(
@@ -136,6 +137,8 @@ class _AddState extends State<Add> {
     );
   }
 
+  // This function handles the navigation from add screen to the nutriment
+  // details screen.
   void pushNewPageWithFoodSuggestion(
       String name, double calo, double carbs, double proteins, double fats) {
     Navigator.pushReplacementNamed(context, '/details', arguments: {

@@ -1,5 +1,3 @@
-// This screen is the main screen where users can use phone camera or gallary
-// to take photo of the fruit
 import 'package:flutter/material.dart';
 import 'package:my_app/Pages/Controller/add_navigator.dart';
 import 'package:my_app/Pages/Controller/record_navigator.dart';
@@ -26,6 +24,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentPage],
+
+      // NavigationBar component
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentPage,
         onDestinationSelected: (currentPage) =>

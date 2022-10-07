@@ -1,8 +1,9 @@
-// This screen will show all items that have been searched by users
-// This includes photo, item name, calories, similar categories.
-
 import 'package:flutter/material.dart';
 import 'package:my_app/Pages/Model/firebase.dart';
+
+// This screen will show all items that have been added by users
+// each container will include the amount of calories, carb, protein and fat 
+// in each food.
 
 class Record extends StatefulWidget {
   const Record({super.key});

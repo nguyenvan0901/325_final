@@ -3,6 +3,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../Model/barcode_scanner.dart';
 
+// This screen displays a spiner indicating to users that the app is processing
+// the barcode
+
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
 
@@ -14,6 +17,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
   String? itemName = "";
   var itemDetails = {};
 
+  // This function is called once nutriment data has been received
+  // and it will push the app to the nutriment details screen.
   void loadScanData() async {
     CodeScanner cs = CodeScanner();
     await cs.openBarCodeScanner();
@@ -43,6 +48,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     return const Scaffold(
       backgroundColor: Colors.green,
       body: Center(
+        // External API SpinKitRotatingCircle component
         child: SpinKitRotatingCircle(
           color: Colors.white,
           size: 80,

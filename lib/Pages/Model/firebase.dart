@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+// This file contains all the functions that handle the logic of reading and 
+// writting data from firebase.
 class FirebaseAction {
   FirebaseAction();
 
+  // This list contains all the food read/retrive from firebase.
   List<Entry> foodItems = [];
 
+  // This function handles the logic in writting new entry to firebase.
   void addToDatabase(String name, double calories, double carbs, double protein,
       double fat) async {
     DateTime today = DateTime.now();
     String dateStr = "${today.day}-${today.month}-${today.year}";
     debugPrint(dateStr);
+    // using the date in string format as th collection name
     final docUser = FirebaseFirestore.instance.collection(dateStr).doc();
     final json = {
       'name': name,
@@ -23,6 +28,7 @@ class FirebaseAction {
     debugPrint("check firebase!");
   }
 
+  // This function handles the logic behind reading the data from firebase
   Future<List<Entry>> retrieveDataOnDate(String date) async {
     var records = await FirebaseFirestore.instance.collection(date).get();
     List<Entry> items = records.docs
@@ -40,6 +46,8 @@ class FirebaseAction {
   }
 }
 
+// This class is an instance that contains all the nutriment values of a food 
+// read from firebase.
 class Entry {
   String name = "unknown";
   double calories = 0;
