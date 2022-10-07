@@ -79,7 +79,7 @@ class CodeScanner {
     }
   }
 
-  // This method is used to retrieve the project that just got scanned
+  // This method is used to retrieve the product that just got scanned
   Future<Product?> getProduct(scanResult) async {
     var barcode = scanResult;
 
